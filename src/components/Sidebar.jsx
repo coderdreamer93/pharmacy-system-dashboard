@@ -11,6 +11,7 @@ import logo from '../assests/pharmacy_logo3.jpg'; // Import the image file
 
 import { useAuth } from '../containers/AuthContext';
 import Cookies from 'js-cookie';
+import { toast } from 'react-toastify'; // Assuming you're using react-toastify
 
 
 
@@ -37,10 +38,19 @@ const Sidebar = () => {
         // Remove token from localStorage
         localStorage.removeItem('token');
         // Call the logout function passed as a prop
-        logout();
-        // Redirect to login page
-        window.location.href = '/login';
-    };
+        logout()
+          .then(() => {
+            // Display a toast message
+            toast.success('Logout successfully!');
+            // Redirect to login page
+            window.location.href = '/login';
+          })
+          .catch((error) => {
+            // Display an error toast message
+            toast.error('Error logging out: ' + error.message);
+          });
+      };
+
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };
@@ -93,10 +103,10 @@ const Sidebar = () => {
                                         <BiCart className='bi my-1 me-2 fs-5' />
                                         <span>Product</span>
                                     </Link>
-                                    <Link to='/setting' className={`list-group-item list-group-item-action d-flex align-items-center mb-2 ${isActive('/setting')}`}>
+                                    {/* <Link to='/setting' className={`list-group-item list-group-item-action d-flex align-items-center mb-2 ${isActive('/setting')}`}>
                                         <BiPackage className="fs-5 me-2 my-1" />
                                         <span>Setting</span>
-                                    </Link>
+                                    </Link> */}
                                     <Link to='/login' className={`list-group-item list-group-item-action d-flex align-items-center mb-2 ${isActive('/login')}`} onClick={handleLogout}><BiPackage className="fs-5 me-2 my-1" />    <span>Logout</span></Link>
 
 

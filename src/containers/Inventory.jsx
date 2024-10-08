@@ -26,7 +26,7 @@ const Inventory = ({ Toggle }) => {
   const fetchInventory = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/inventories/inventories"
+        "https://pharmacy-system-backend.vercel.app/api/v1/inventories/inventories"
       );
       setInventory(response.data);
     } catch (error) {
@@ -37,7 +37,7 @@ const Inventory = ({ Toggle }) => {
   const fetchProductNames = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/sales/sales"
+        "https://pharmacy-system-backend.vercel.app/api/v1/sales/sales"
       );
       const productNames = response.data.map((sale) => sale.productName);
       setProductNames([...new Set(productNames)]); // Remove duplicates
@@ -74,7 +74,7 @@ const Inventory = ({ Toggle }) => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8080/api/v1/inventories/inventories",
+        "https://pharmacy-system-backend.vercel.app/api/v1/inventories/inventories",
         formData
       );
       fetchInventory();

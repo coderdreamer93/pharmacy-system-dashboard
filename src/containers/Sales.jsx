@@ -23,7 +23,7 @@ const Sales = ({ Toggle }) => {
 
     const fetchSales = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/v1/sales/sales'); // Use GET request to fetch data
+            const response = await axios.get('https://pharmacy-system-backend.vercel.app/api/v1/sales/sales'); // Use GET request to fetch data
             setSales(response.data);
         } catch (error) {
             console.error('Error fetching sales:', error);
@@ -60,7 +60,7 @@ const Sales = ({ Toggle }) => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
         try {
-            await axios.post('http://localhost:8080/api/v1/sales/sales', formData); // Submit form data
+            await axios.post('https://pharmacy-system-backend.vercel.app/api/v1/sales/sales', formData); // Submit form data
             fetchSales(); // Refetch sales data after successful submission
             setShowModal(false); // Close modal after successful submission
             setFormData({  // Clear form data after successful submission

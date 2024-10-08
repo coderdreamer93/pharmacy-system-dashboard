@@ -12,7 +12,7 @@ const Purchase = () => {
     const [searchQuery, setsearchQuery] = useState("");
     const fetchPurchases = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/v1/purchase/purchases');
+            const response = await fetch('https://pharmacy-system-backend.vercel.app/api/v1/purchase/purchases');
             if (!response.ok) {
                 throw new Error('Failed to fetch purchases');
             }
