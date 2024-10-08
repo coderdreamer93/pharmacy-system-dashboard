@@ -16,16 +16,16 @@ const Card = ({ Toggle }) => {
   const fetchData = async () => {
     try {
       const salesResponse = await axios.get(
-        "http://localhost:8080/api/v1/sales/sales"
+        "https://pharmacy-system-backend.vercel.app/api/v1/sales/sales"
       );
       setSalesData(salesResponse.data);
 
       const inventoriesResponse = await axios.get(
-        "http://localhost:8080/api/v1/inventories/inventories"
+        "https://pharmacy-system-backend.vercel.app/api/v1/inventories/inventories"
       );
       setInventoriesData(inventoriesResponse.data);
       const purchasesResponse = await axios.get(
-        "http://localhost:8080/api/v1/purchase/purchases"
+        "https://pharmacy-system-backend.vercel.app/api/v1/purchase/purchases"
       );
       setInventoriesData(inventoriesResponse.data);
 
